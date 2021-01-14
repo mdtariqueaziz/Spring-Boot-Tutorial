@@ -37,14 +37,14 @@ public class JpaWithSpringBootApplication {
 //		System.out.println(result);
 
 		// Insert multiple object
-		List<Student> students = new ArrayList<Student>();
-		students.add(student);
-		students.add(student2);
-		Iterable<Student> result2 = studentRepo.saveAll(students);
-
-		result2.forEach(res -> {
-			System.out.println(res);
-		});
+//		List<Student> students = new ArrayList<Student>();
+//		students.add(student);
+//		students.add(student2);
+//		Iterable<Student> result2 = studentRepo.saveAll(students);
+//
+//		result2.forEach(res -> {
+//			System.out.println(res);
+//		});
 
 		// Find by id
 //		Optional<Student> findById = studentRepo.findById(6);
@@ -68,6 +68,29 @@ public class JpaWithSpringBootApplication {
 		// Delete All
 //		studentRepo.deleteAll();
 //		System.out.println("All record deleted successfully");
+
+//		/// Custome methods
+//		List<Student> findByNameAndCity = studentRepo.findByNameAndCity("Karan", "Patna");
+//		findByNameAndCity.forEach(data -> {
+//			System.out.println(data);
+//		});
+
+//		List<Student> findByCityStartingWith = studentRepo.findByCityStartingWith("G");
+//		findByCityStartingWith.forEach(e -> {
+//			System.out.println(e);
+//		});
+
+//		studentRepo.getAllStudent().forEach(e -> {
+//			System.out.println(e);
+//		});
+
+//		studentRepo.getStudentByName("Karan", "patna").forEach(e -> {
+//			System.out.println(e);
+//		});
+
+		studentRepo.getAllStudentN().forEach(e -> {
+			System.out.println(e);
+		});
 
 	}
 
