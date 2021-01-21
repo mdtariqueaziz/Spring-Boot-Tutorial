@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>This is a services page</title>
+</head>
+<body>
+<h1>This is service page</h1>
+	<footer th:include="footer::footer1(${firstName},${lastName})"></footer>
+	<h1>This is another service header</h1>
+</body>
+</html>

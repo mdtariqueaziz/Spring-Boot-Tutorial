@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>This is loop examle</title>
+</head>
+<body>
+	<h2 th:text="${fruitsName}"></h2>
+	<ul th:each="n,status : ${fruitsName}">
+		<span  th:text="${status.index+1}+' '+${n}"></span>
+	</ul>
+
+</body>
+</html>

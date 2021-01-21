@@ -12,5 +12,4 @@ public interface EmployeeRepository extends CrudRepository<Employee, Integer> {
 	public List<Employee> findAll();
 
 	public Employee findById(int id);
-
 }
