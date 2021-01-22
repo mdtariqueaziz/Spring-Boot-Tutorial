@@ -5,3 +5,4 @@
 <h2>4-REST API CRUD operation</h2>
 <h2>5-File Uploading using REST API</h2>
 <h2>6-Thymleaf</h2>
+<h2>7-Hibernate Validation in Spring Boot</h2>
