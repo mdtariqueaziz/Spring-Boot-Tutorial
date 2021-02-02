@@ -61,8 +61,7 @@ public class UserControler {
 
 		// file the file to folder and update the name to contact
 		try {
-			System.out.println(contact);
-			contact.setImageName(filePart.getOriginalFilename());
+			contact.setImage(filePart.getBytes());
 			File saveFile = new ClassPathResource("static/img").getFile();
 			Path path = Paths.get(saveFile.getAbsolutePath() + File.separator + filePart.getOriginalFilename());
 			Files.copy(filePart.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);

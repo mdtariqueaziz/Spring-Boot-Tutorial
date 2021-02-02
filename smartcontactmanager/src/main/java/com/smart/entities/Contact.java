@@ -16,8 +16,8 @@ public class Contact {
 	private String email;
 	private String phone;
 
-
-	private String imageName;
+	@Lob
+	private byte[] image;
 //	@Transient
 //	private MultipartFile userImage;
 	
@@ -95,18 +95,19 @@ public class Contact {
 		this.description = description;
 	}
 
-	public String getImageName() {
-		return imageName;
+
+	public byte[] getImage() {
+		return image;
 	}
 
-	public void setImageName(String imageName) {
-		this.imageName = imageName;
+	public void setImage(byte[] image) {
+		this.image = image;
 	}
 
 	@Override
 	public String toString() {
 		return "Contact [cId=" + cId + ", name=" + name + ", secondName=" + secondName + ", work=" + work + ", email="
-				+ email + ", phone=" + phone + ", userImage=" + imageName + ", description=" + description + ", user="
+				+ email + ", phone=" + phone + ", userImage=" + image + ", description=" + description + ", user="
 				+ user + "]";
 	}
 
