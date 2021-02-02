@@ -1,12 +1,8 @@
 package com.smart.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import org.springframework.web.multipart.MultipartFile;
+
+import javax.persistence.*;
 
 @Entity
 @Table(name = "CONTACT")
@@ -19,9 +15,11 @@ public class Contact {
 	private String work;
 	private String email;
 	private String phone;
-	
 
-	private String userImage;
+
+	private String imageName;
+//	@Transient
+//	private MultipartFile userImage;
 	
 	@Column(length = 5000)
 	private String description;
@@ -97,18 +95,18 @@ public class Contact {
 		this.description = description;
 	}
 
-	public String getUserImage() {
-		return userImage;
+	public String getImageName() {
+		return imageName;
 	}
 
-	public void setUserImage(String userImage) {
-		this.userImage = userImage;
+	public void setImageName(String imageName) {
+		this.imageName = imageName;
 	}
 
 	@Override
 	public String toString() {
 		return "Contact [cId=" + cId + ", name=" + name + ", secondName=" + secondName + ", work=" + work + ", email="
-				+ email + ", phone=" + phone + ", userImage=" + userImage + ", description=" + description + ", user="
+				+ email + ", phone=" + phone + ", userImage=" + imageName + ", description=" + description + ", user="
 				+ user + "]";
 	}
 
