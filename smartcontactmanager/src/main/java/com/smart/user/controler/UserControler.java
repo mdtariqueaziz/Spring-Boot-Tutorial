@@ -7,6 +7,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.security.Principal;
+import java.sql.Blob;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
@@ -51,39 +52,35 @@ public class UserControler {
 	}
 
 	@PostMapping("/process-contact")
-	public String processContact(@ModelAttribute Contact contact, @RequestParam("userImage") MultipartFile file,
+	public String processContact(@ModelAttribute Contact contact, @RequestParam("userImage") MultipartFile filePart,
 			Principal principal) {
-		
-			String userName = principal.getName();
-			User user = this.userRepositary.getUserByUserName(userName);
-			// processing and uploading file
-			
-				// file the file to folder and update the name to contact
-			
-			
-				try {
-					contact.setUserImage(file.getOriginalFilename());
-				  File saveFile = new ClassPathResource("static/img").getFile();
-					Path path = Paths.get(saveFile.getAbsolutePath() + File.separator + file.getOriginalFilename());
-					Files.copy(file.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
-					
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
 
-			user.getContact().add(contact);
+		String userName = principal.getName();
+		User user = this.userRepositary.getUserByUserName(userName);
+		// processing and uploading file
 
-			contact.setUser(user);
+		// file the file to folder and update the name to contact
+		try {
+			contact.setImage(filePart.getBytes());
+			File saveFile = new ClassPathResource("static/img").getFile();
+			Path path = Paths.get(saveFile.getAbsolutePath() + File.separator + filePart.getOriginalFilename());
+			Files.copy(filePart.getInputStream(), path, StandardCopyOption.REPLACE_EXISTING);
 
-			this.userRepositary.save(user);
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
-			System.out.println("Data " + contact);
+		user.getContact().add(contact);
 
-			System.out.println("Added to database!");
-		
+		contact.setUser(user);
+
+		this.userRepositary.save(user);
+
+		System.out.println("Data " + contact);
+
+		System.out.println("Added to database!");
+
 		return "normal_user/add_contact";
 	}
-
-
 }
