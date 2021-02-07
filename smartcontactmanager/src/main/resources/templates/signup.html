@@ -15,11 +15,11 @@
 				<div class="card-body">
 
 					<div th:if="${session.message}"
-						th:classappend="${session.message.type}" class="alert"
+						th:classappend="${session.message.type}" class="alert text-center"
 						role="alert">
-						<p class="text-center" th:text="${session.message.content}">
+						<span class="text-center" th:text="${session.message.content}">
 							<th:block th:text="${#session.removeAttribute('message')}"></th:block>
-						</p>
+						</span>
 					</div>
 					<form th:action="@{/do_register}" method="post" th:object="${user}">
 

@@ -1,110 +1,121 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org" th:replace="normal_user/base::layout(~{::section})">
+<html xmlns:th="http://www.thymeleaf.org"
+	th:replace="normal_user/base::layout(~{::section})">
 <head>
 <meta charset="ISO-8859-1">
 <title>User dashboard</title>
 </head>
 <body>
-<section>
-<div class="container-fluid " >
-<div class="card mr-4">
-<h2 class="text-center font-weight-bold mt-3">Add Contact</h2>
-<div class="card-body mr-5 ml-5">
-<form th:action="@{/user/process-contact}"
-   th:object="${contact}" method="post" enctype="multipart/form-data" >
+	<section>
+		<div class="container-fluid ">
+			<div class="card mr-4">
+				<div class="card-body mr-5 ml-5">
+				<div th:if="${session.message}">
+					<div th:classappend="${session.message.type}" class="alert text-center"
+						role="alert">
+						<span class="text-center" th:text="${session.message.content}">
+						</span>
+					</div>
+					<th:block th:text="${#session.removeAttribute('message')}"></th:block>
+					</div>
+					<h2 class="text-center font-weight-bold mt-3">Add Contact</h2>
+					<form th:action="@{/user/process-contact}" th:object="${contact}"
+						method="post" enctype="multipart/form-data">
 
 
-<div class="col-auto">
-      <label class="sr-only" for="inlineFormInputGroup">Username</label>
-      <div class="input-group mb-2">
-        <div class="input-group-prepend">
-          <div class="input-group-text">
-          <i class="fa fa-plus"></i>
-          </div>
-        </div>
-        <input type="text" name="name" class="form-control"  placeholder="Enter name">
-      </div>
-    </div>
-    
-    <div class="col-auto">
-      <label class="sr-only" for="inlineFormInputGroup">Username</label>
-      <div class="input-group mb-2">
-        <div class="input-group-prepend">
-          <div class="input-group-text">
-          <i class="fa fa-user"></i>
-          </div>
-        </div>
-        <input type="text" name="secondName" class="form-control"  placeholder="Enter nick name">
-      </div>
-    </div>
-    
-    <div class="col-auto">
-      <label class="sr-only" for="inlineFormInputGroup">Username</label>
-      <div class="input-group mb-2">
-        <div class="input-group-prepend">
-          <div class="input-group-text">
-          <i class="fa fa-phone"></i>
-          </div>
-        </div>
-        <input type="text" name="phone" class="form-control"  placeholder="Enter phone number">
-      </div>
-    </div>
-    
-    <div class="col-auto">
-      <label class="sr-only" for="inlineFormInputGroup">Username</label>
-      <div class="input-group mb-2">
-        <div class="input-group-prepend">
-          <div class="input-group-text">
-        @
-          </div>
-        </div>
-        <input type="text" name="email" class="form-control"  placeholder="Enter email">
-      </div>
-    </div>
-    
-    <div class="col-auto">
-      <label class="sr-only" for="inlineFormInputGroup">Username</label>
-      <div class="input-group mb-2">
-        <div class="input-group-prepend">
-          <div class="input-group-text">
-          <i class="fa fa-briefcase"></i>
-          </div>
-        </div>
-        <input type="text" name="work" class="form-control"  placeholder="Enter work">
-      </div>
-    </div>
-    
-  
-    <div class="col-auto">
-      <label class="sr-only" for="inlineFormInputGroup">Username</label>
-      <div class="input-group mb-2">
-        
-        <textarea name="description" class="form-control" rows="7" cols="" placeholder="Enter contact description"></textarea>
-      </div>
-    </div>
-    
-    
-    <div class="col-auto">
-      <div class="input-group mb-2">
-    <div class="custom-file">
-    <input type="file" name="userImage" >
-    </div>
-    </div>
-    </div>
-    
-    
-    <div class="col-auto">
-      <label class="sr-only" for="inlineFormInputGroup">Username</label>
-      <div class="input-group mb-2">
-      <button type="submit" class="btn btn-primary">Submit</button>
-      </div>
-      </div>
-    
-</form>
+						<div class="col-auto">
+							<label class="sr-only" for="inlineFormInputGroup">Username</label>
+							<div class="input-group mb-2">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<i class="fa fa-plus"></i>
+									</div>
+								</div>
+								<input type="text" name="name" class="form-control"
+									placeholder="Enter name">
+							</div>
+						</div>
 
-</div>
-</div>
-</div>
-</section>
+						<div class="col-auto">
+							<label class="sr-only" for="inlineFormInputGroup">Username</label>
+							<div class="input-group mb-2">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<i class="fa fa-user"></i>
+									</div>
+								</div>
+								<input type="text" name="secondName" class="form-control"
+									placeholder="Enter nick name">
+							</div>
+						</div>
+
+						<div class="col-auto">
+							<label class="sr-only" for="inlineFormInputGroup">Username</label>
+							<div class="input-group mb-2">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<i class="fa fa-phone"></i>
+									</div>
+								</div>
+								<input type="text" name="phone" class="form-control"
+									placeholder="Enter phone number">
+							</div>
+						</div>
+
+						<div class="col-auto">
+							<label class="sr-only" for="inlineFormInputGroup">Username</label>
+							<div class="input-group mb-2">
+								<div class="input-group-prepend">
+									<div class="input-group-text">@</div>
+								</div>
+								<input type="text" name="email" class="form-control"
+									placeholder="Enter email">
+							</div>
+						</div>
+
+						<div class="col-auto">
+							<label class="sr-only" for="inlineFormInputGroup">Username</label>
+							<div class="input-group mb-2">
+								<div class="input-group-prepend">
+									<div class="input-group-text">
+										<i class="fa fa-briefcase"></i>
+									</div>
+								</div>
+								<input type="text" name="work" class="form-control"
+									placeholder="Enter work">
+							</div>
+						</div>
+
+
+						<div class="col-auto">
+								<textarea name="description" id="textarea" class="form-control" rows="10"
+									cols="" placeholder="Enter contact description"></textarea>
+						</div><br>
+
+
+						<div class="col-auto">
+							<div class="input-group mb-2">
+								<div class="custom-file">
+									<input type="file" name="userImage">
+								</div>
+							</div>
+						</div>
+
+
+						<div class="col-auto">
+							<label class="sr-only" for="inlineFormInputGroup">Username</label>
+							<div class="input-group mb-2">
+								<button type="submit" class="btn btn-primary">Submit</button>
+							</div>
+						</div>
+
+					</form>
+
+				</div>
+			</div>
+		</div>
+		  <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
+             <script>tinymce.init({selector:'#textarea'});</script>
+	</section>
 </body>
 </html>

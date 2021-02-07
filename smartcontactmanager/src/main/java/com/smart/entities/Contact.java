@@ -1,8 +1,13 @@
 package com.smart.entities;
 
-import org.springframework.web.multipart.MultipartFile;
-
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
 
 @Entity
 @Table(name = "CONTACT")
@@ -20,7 +25,7 @@ public class Contact {
 	private byte[] image;
 //	@Transient
 //	private MultipartFile userImage;
-	
+
 	@Column(length = 5000)
 	private String description;
 
@@ -95,7 +100,6 @@ public class Contact {
 		this.description = description;
 	}
 
-
 	public byte[] getImage() {
 		return image;
 	}
@@ -110,9 +114,5 @@ public class Contact {
 				+ email + ", phone=" + phone + ", userImage=" + image + ", description=" + description + ", user="
 				+ user + "]";
 	}
-
-	
-
-	
 
 }
